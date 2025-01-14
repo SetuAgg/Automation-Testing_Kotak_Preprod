@@ -1,5 +1,8 @@
 import pytest
+import allure
 import time
+
+from allure_commons.types import AttachmentType
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from base_pages.Kotak_Login_Page import Kotak_Login_Page
@@ -10,7 +13,7 @@ class Test05_Kotak_Dashboard_Tab:
     page_url = "https://kotakacademy-preprod.niit.com/"
     username = "deepalik@mailinator.com"
     password = "Kotak@123"
-
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_dashboard_tab(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -33,13 +36,13 @@ class Test05_Kotak_Dashboard_Tab:
         time.sleep(5)
         if img.is_displayed():
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_dashboard_btn.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='dashboard_tab', attachment_type=AttachmentType.PNG)
             self.driver.close()
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_dashboard_btn.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='dashboard_tab', attachment_type=AttachmentType.PNG)
             self.driver.close()
             assert False
-
+    @allure.severity(allure.severity_level.BLOCKER)
     def test_banner_box(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -60,13 +63,13 @@ class Test05_Kotak_Dashboard_Tab:
         self.driver.execute_script("arguments[0].style.border='5px solid red'", banner_box)
         if banner_box.is_displayed():
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_banner_box.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='banner_box', attachment_type=AttachmentType.PNG)
             self.driver.close()
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_banner_box.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='banner_box', attachment_type=AttachmentType.PNG)
             self.driver.close()
             assert False
-
+    @allure.severity(allure.severity_level.NORMAL)
     def test_learning_section(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -90,13 +93,13 @@ class Test05_Kotak_Dashboard_Tab:
         time.sleep(5)
         if learning_sec.is_displayed():
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_learning_section.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='learning_section', attachment_type=AttachmentType.PNG)
             self.driver.close()
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_learning_section.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='learning_section', attachment_type=AttachmentType.PNG)
             self.driver.close()
             assert False
-
+    @allure.severity(allure.severity_level.TRIVIAL)
     def test_leaderboard_section(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -120,13 +123,13 @@ class Test05_Kotak_Dashboard_Tab:
         time.sleep(5)
         if leaderboard_sec.is_displayed():
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_leaderboard_section.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='leaderboard_section', attachment_type=AttachmentType.PNG)
             self.driver.close()
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_leaderboard_section.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='leaderboard_section', attachment_type=AttachmentType.PNG)
             self.driver.close()
             assert False
-
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_calender_view(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -150,10 +153,11 @@ class Test05_Kotak_Dashboard_Tab:
         time.sleep(5)
         if calender_sec.is_displayed():
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_calender_view.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='calender_view', attachment_type=AttachmentType.PNG)
             self.driver.close()
+
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_calender_view.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='calender_view', attachment_type=AttachmentType.PNG)
             self.driver.close()
             assert False
 
@@ -171,7 +175,7 @@ class Test05_Kotak_Dashboard_Tab:
 
 
 
-git remote add origin https://github.com/SetuAgg/Automation-Testing.git
+
 
 
 
