@@ -13,7 +13,10 @@ class Test05_Kotak_Dashboard_Tab:
     page_url = "https://kotakacademy-preprod.niit.com/"
     username = "deepalik@mailinator.com"
     password = "Kotak@123"
+
+
     @allure.severity(allure.severity_level.CRITICAL)
+    @allure.title("Testing Dashboard Tab existence")
     def test_dashboard_tab(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -37,12 +40,19 @@ class Test05_Kotak_Dashboard_Tab:
         if img.is_displayed():
             assert True
             allure.attach(self.driver.get_screenshot_as_png(), name='dashboard_tab', attachment_type=AttachmentType.PNG)
+            message_m = "Dashboard Tab is working fine and visible and test-case passed successfully.."
+            allure.attach(message_m, name="dashboard_tab", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
         else:
             allure.attach(self.driver.get_screenshot_as_png(), name='dashboard_tab', attachment_type=AttachmentType.PNG)
+            message_n = "My Learning Button is not working fine and test-case failed.."
+            allure.attach(message_n, name="dashboard_tab", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
             assert False
+
+
     @allure.severity(allure.severity_level.BLOCKER)
+    @allure.title("Testing Banner Box existence")
     def test_banner_box(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -64,12 +74,19 @@ class Test05_Kotak_Dashboard_Tab:
         if banner_box.is_displayed():
             assert True
             allure.attach(self.driver.get_screenshot_as_png(), name='banner_box', attachment_type=AttachmentType.PNG)
+            message_l = "Banner Box is working and visible and test-case passed successfully.."
+            allure.attach(message_l, name="my_learning_btn_success", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
         else:
             allure.attach(self.driver.get_screenshot_as_png(), name='banner_box', attachment_type=AttachmentType.PNG)
+            message_k = "Banner Box is not working and visible and test-case failed.."
+            allure.attach(message_k, name="my_learning_btn_success", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
             assert False
+
+
     @allure.severity(allure.severity_level.NORMAL)
+    @allure.title("Testing My Learning section existence")
     def test_learning_section(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -94,12 +111,19 @@ class Test05_Kotak_Dashboard_Tab:
         if learning_sec.is_displayed():
             assert True
             allure.attach(self.driver.get_screenshot_as_png(), name='learning_section', attachment_type=AttachmentType.PNG)
+            message_j = "Learning section is working and visible and test-case passed successfully.."
+            allure.attach(message_j, name="learning_section", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
         else:
             allure.attach(self.driver.get_screenshot_as_png(), name='learning_section', attachment_type=AttachmentType.PNG)
+            message_h = "Learning section is not working and visible and test-case failed.."
+            allure.attach(message_h, name="learning_section", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
             assert False
+
+
     @allure.severity(allure.severity_level.TRIVIAL)
+    @allure.title("Testing Leaderboard section existence")
     def test_leaderboard_section(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -124,12 +148,19 @@ class Test05_Kotak_Dashboard_Tab:
         if leaderboard_sec.is_displayed():
             assert True
             allure.attach(self.driver.get_screenshot_as_png(), name='leaderboard_section', attachment_type=AttachmentType.PNG)
+            message_p = "Leaderboard section is working and visible and test-case passed successfully.."
+            allure.attach(message_p, name="leaderboard_section", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
         else:
             allure.attach(self.driver.get_screenshot_as_png(), name='leaderboard_section', attachment_type=AttachmentType.PNG)
+            message_o = "Leaderboard section is not working and visible and test-case failed.."
+            allure.attach(message_o, name="leaderboard_section", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
             assert False
+
+
     @allure.severity(allure.severity_level.CRITICAL)
+    @allure.title("Testing calender view existence")
     def test_calender_view(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -154,10 +185,14 @@ class Test05_Kotak_Dashboard_Tab:
         if calender_sec.is_displayed():
             assert True
             allure.attach(self.driver.get_screenshot_as_png(), name='calender_view', attachment_type=AttachmentType.PNG)
+            message_i = "Calender View is working and visible and test-case passed successfully.."
+            allure.attach(message_i, name="Calender_View", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
 
         else:
             allure.attach(self.driver.get_screenshot_as_png(), name='calender_view', attachment_type=AttachmentType.PNG)
+            message_u = "Calender View is not working and visible and test-case failed.."
+            allure.attach(message_u, name="Calender_View", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
             assert False
 

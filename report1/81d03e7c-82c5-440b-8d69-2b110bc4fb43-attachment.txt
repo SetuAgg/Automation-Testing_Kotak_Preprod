@@ -1,0 +1,1 @@
+Forgot Password Text of login page is visible and test-case passed successfully..

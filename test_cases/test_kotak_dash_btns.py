@@ -1,5 +1,8 @@
+import allure
 import pytest
 import time
+
+from allure_commons.types import AttachmentType
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -14,7 +17,8 @@ class Test_02_Kotak_Dash_Btns:
     username = "deepalik@mailinator.com"
     password = "Kotak@123"
 
-
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.title("Testing cross button existence")
     def test_cross_button(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -29,9 +33,13 @@ class Test_02_Kotak_Dash_Btns:
         self.driver.click_cross_btn.click_cross_btn()
         time.sleep(3)
         assert True
+        allure.attach(self.driver.get_screenshot_as_png(), name='cross_btn', attachment_type=AttachmentType.PNG)
         self.driver.save_screenshot(".\\screenshots\\test_cross_btn.png")
         self.driver.close()
 
+
+    @allure.severity(allure.severity_level.BLOCKER)
+    @allure.title("Testing Dashboard Button existence")
     def test_dashboard_btn(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -46,13 +54,20 @@ class Test_02_Kotak_Dash_Btns:
         img = self.driver.find_element(By.XPATH,'//div[@class="box d-flex align-items-baseline justify-content-center oboardg_pop_icon"]')
         if img.is_displayed():
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_dashboard_btn.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='dashboard_btn', attachment_type=AttachmentType.PNG)
+            message_a = "Dashboard Button is working fine and test-case passed successfully.."
+            allure.attach(message_a, name='dashboard_btn', attachment_type=AttachmentType.TEXT)
             self.driver.close()
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_dashboard_btn.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='dashboard_btn', attachment_type=AttachmentType.PNG)
+            message_b = "Dashboard Button is not working fine and test-case failed.."
+            allure.attach(message_b, name='dashboard_btn', attachment_type=AttachmentType.TEXT)
             self.driver.close()
             assert False
 
+
+    @allure.severity(allure.severity_level.TRIVIAL)
+    @allure.title("Testing My Learning Button existence")
     def test_my_learning_btn(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -67,13 +82,20 @@ class Test_02_Kotak_Dash_Btns:
         text = self.driver.find_element(By.XPATH,'//div[@class="d-flex justify-content-center"]').text
         if text == "My Learning Journey":
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_my_learning_btn.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='my_learning_btn', attachment_type=AttachmentType.PNG)
+            message_c = "My Learning Button is working fine and test-case passed successfully.."
+            allure.attach(message_c, name='my_learning_btn', attachment_type=AttachmentType.TEXT)
             self.driver.close()
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_my_learning_btn.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='my_learning_btn', attachment_type=AttachmentType.PNG)
+            message_d = "My Learning Button is not working fine and test-case failed.."
+            allure.attach(message_d, name='my_learning_btn', attachment_type=AttachmentType.TEXT)
             self.driver.close()
             assert False
 
+
+    @allure.severity(allure.severity_level.MINOR)
+    @allure.title("Testing Feedback Button existence")
     def test_feedback_btn(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -94,13 +116,20 @@ class Test_02_Kotak_Dash_Btns:
         time.sleep(5)
         if box.is_displayed():
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_feedback_btn.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='feedback_btn', attachment_type=AttachmentType.PNG)
+            message_e = "Feedback Button is working fine and test-case passed successfully.."
+            allure.attach(message_e, name='feedback_btn', attachment_type=AttachmentType.TEXT)
             self.driver.close()
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_feedback_btn.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='feedback_btn', attachment_type=AttachmentType.PNG)
+            message_f = "Feedback Button is not working fine and test-case failed.."
+            allure.attach(message_f, name='feedback_btn', attachment_type=AttachmentType.TEXT)
             self.driver.close()
             assert False
 
+
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.title("Testing Help Button existence")
     def test_take_a_tour_btn(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -121,10 +150,14 @@ class Test_02_Kotak_Dash_Btns:
         time.sleep(5)
         if dia_box.is_displayed():
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_take_a_tour_btn.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='take_a_tour_btn', attachment_type=AttachmentType.PNG)
+            message_g = "Take a Tour Button is working fine and test-case passed successfully.."
+            allure.attach(message_g, name='take_a_tour_btn', attachment_type=AttachmentType.TEXT)
             self.driver.close()
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_take_a_tour_btn.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='take_a_tour_btn', attachment_type=AttachmentType.PNG)
+            message_h = "Take a Tour Button is not working fine and test-case failed.."
+            allure.attach(message_h, name='take_a_tour_btn', attachment_type=AttachmentType.TEXT)
             self.driver.close()
             assert False
 

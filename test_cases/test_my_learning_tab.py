@@ -1,5 +1,8 @@
+import allure
 import pytest
 import time
+
+from allure_commons.types import AttachmentType
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from base_pages.Kotak_Login_Page import Kotak_Login_Page
@@ -15,7 +18,8 @@ class Test_03_Kotak_My_Learning_Tab:
     footer_Xpath = '//footer[@style="margin-left: 0px;"]'
 
 
-
+    @allure.severity(allure.severity_level.TRIVIAL)
+    @allure.title("Tesing my learning button existence")
     def test_my_learning_btn(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -34,13 +38,20 @@ class Test_03_Kotak_My_Learning_Tab:
         if element == "My Learning Journey":
             time.sleep(3)
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_my_learning_tab.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='my_learning_btn', attachment_type=AttachmentType.PNG)
+            message1 = "My Learning Button is working fine and test-case passed successfully.."
+            allure.attach(message1,name="my_learning_btn_success",attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_my_learning_tab.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='my_leaning_btn', attachment_type=AttachmentType.PNG)
+            message2 = "My Learning Button is not working and test-case failed.."
+            allure.attach(message2, name="my_learning_btn_success", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
             assert False
 
+
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.title("Testing self learning image existence")
     def test_self_learning_img(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -62,13 +73,19 @@ class Test_03_Kotak_My_Learning_Tab:
         if section.is_displayed():
             time.sleep(3)
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_learning_section.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='self_learning_img', attachment_type=AttachmentType.PNG)
+            message3 = "The image is visible successfully and test-case passed successfully.."
+            allure.attach(message3, name="self_learning_img", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_learning_section.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='self_learning_img', attachment_type=AttachmentType.PNG)
+            message4 = "The image is not visible and test-case failed.."
+            allure.attach(message4, name="self_learning_img", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
             assert False
 
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.title("Testing main learning block existence")
     def test_main_learning_block(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -88,13 +105,20 @@ class Test_03_Kotak_My_Learning_Tab:
         if block.is_displayed():
             time.sleep(3)
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_main_learning_block.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='main_learning_block', attachment_type=AttachmentType.PNG)
+            message5 = "Learning Block is visible and test-case passed successfully.."
+            allure.attach(message5, name="learning_block", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_main_learning_block.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='main_learning_block', attachment_type=AttachmentType.PNG)
+            message6 = "Learning Block is not visible and test-case failed.."
+            allure.attach(message6, name="learning_block", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
             assert False
 
+
+    @allure.severity(allure.severity_level.BLOCKER)
+    @allure.title("Testing back button Visibility")
     def test_back_btn(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -114,12 +138,17 @@ class Test_03_Kotak_My_Learning_Tab:
         if back_btn.is_displayed():
             time.sleep(3)
             assert True
-            self.driver.save_screenshot(".\\screenshots\\test_back_btn.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='back_btn', attachment_type=AttachmentType.PNG)
+            message7 = "Back Button is working fine and test-case passed successfully.."
+            allure.attach(message7, name="back_btn", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
         else:
-            self.driver.save_screenshot(".\\screenshots\\test_back_btn.png")
+            allure.attach(self.driver.get_screenshot_as_png(), name='back_btn', attachment_type=AttachmentType.PNG)
+            message8 = "Back Button is not working and test-case failed.."
+            allure.attach(message8, name="back_btn", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
             assert False
+
 
 
 
