@@ -58,6 +58,32 @@ class Test_01_Kotak_Login:
             message4 = "Login Text of login page is not visible and test-case failed.."
             allure.attach(message4, name="login_text", attachment_type=allure.attachment_type.TEXT)
         time.sleep(2)
+        email_label = self.driver.find_element(By.XPATH,"//label[text()='Email Address']")
+        self.driver.execute_script("arguments[0].style.border='5px solid red'", email_label)
+        time.sleep(2)
+        if email_label.is_displayed():
+            allure.attach(self.driver.get_screenshot_as_png(),name="Label_Email",attachment_type=AttachmentType.PNG)
+            message5 = "Email Label is visible and highlighted successfully.."
+            allure.attach(message5,name="Label_Login",attachment_type= allure.attachment_type.TEXT)
+        else:
+            allure.attach(self.driver.get_screenshot_as_png(), name="Label_Email", attachment_type=AttachmentType.PNG)
+            message10 = "Email Label is not visible and highlighted.."
+            allure.attach(message10, name="Label_Login", attachment_type=allure.attachment_type.TEXT)
+            assert False
+        time.sleep(2)
+        pass_label = self.driver.find_element(By.XPATH,"//label[text()='Password']")
+        self.driver.execute_script("arguments[0].style.border='5px solid red'", pass_label)
+        time.sleep(2)
+        if email_label.is_displayed():
+            allure.attach(self.driver.get_screenshot_as_png(), name="Pass_Label", attachment_type=AttachmentType.PNG)
+            message11 = "Password Label is visible and highlighted successfully.."
+            allure.attach(message11, name="Pass_Login", attachment_type=allure.attachment_type.TEXT)
+        else:
+            allure.attach(self.driver.get_screenshot_as_png(), name="Pass_Label", attachment_type=AttachmentType.PNG)
+            message12 = "Password Label is not visible and highlighted.."
+            allure.attach(message12, name="Pass_Label", attachment_type=allure.attachment_type.TEXT)
+            assert False
+        time.sleep(2)
         act_forgot_password_text = self.driver.find_element(By.XPATH,"//a[text()='Forgot Password?']")
         self.driver.execute_script("arguments[0].style.border='5px solid red'", act_forgot_password_text)
         time.sleep(2)

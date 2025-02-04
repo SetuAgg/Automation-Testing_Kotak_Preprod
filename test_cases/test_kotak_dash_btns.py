@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 from base_pages.Kotak_Login_Page import Kotak_Login_Page
 from base_pages.Kotak_Dashboard_page import Kotak_Dashboard_Page
 from base_pages.Kotak_Dashboard_tab import Kotak_Dashboard_Tab
+from base_pages.Kotak_My_Learning_tab import Kotak_My_Learning_Tab
 
 
 
@@ -49,6 +50,9 @@ class Test_02_Kotak_Dash_Btns:
             message_b = "Dashboard Button is not working fine and test-case failed.."
             allure.attach(message_b, name='dashboard_btn', attachment_type=AttachmentType.TEXT)
             assert False
+        time.sleep(2)
+        my_learning_tab = self.driver.find_element(By.XPATH,"//a[text()='My Learning']")
+        self.driver.execute_script("arguments[0].style.border='5px solid red'", my_learning_tab)
         time.sleep(2)
         club_privy = self.driver.find_element(By.XPATH,'//button[@class="btn btn-primary mt-2"]')
         self.driver.execute_script("arguments[0].style.border='5px solid red'", club_privy)
