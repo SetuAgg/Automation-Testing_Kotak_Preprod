@@ -10,6 +10,10 @@ class Kotak_Dashboard_Page:
     feedback_tab_Xpath = '//div[@class="feedback--button contentDesktopView"]'
     take_a_tour_Xpath = '//div[@class="take-tour-button"]'
     cross_btn = '//button[@class="btn-close"]'
+    club_privy_btn = '//button[@class="btn btn-primary mt-2"]'
+    bck_btn = '//button[@class="btn btn-primary bckbtn"]'
+    skip_btn = '//button[@class="skipBtn btn btn-primary"]'
+
 
     def __init__(self,driver):
         self.driver = driver
@@ -34,5 +38,17 @@ class Kotak_Dashboard_Page:
 
     def click_take_a_tour_btn(self):
         self.driver.find_element(By.XPATH,self.take_a_tour_Xpath).click()
+
+    def click_club_privy_btn(self):
+        self.driver.find_element(By.XPATH,self.club_privy_btn).click()
+
+    def click_bck_btn(self):
+        self.driver.find_element(By.XPATH,self.bck_btn).click()
+
+    def click_skip_btn(self):
+        self.driver.find_element(By.XPATH,self.skip_btn).click()
+
+
+
 
 

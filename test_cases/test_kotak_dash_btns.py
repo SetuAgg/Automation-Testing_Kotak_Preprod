@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 
 from base_pages.Kotak_Login_Page import Kotak_Login_Page
 from base_pages.Kotak_Dashboard_page import Kotak_Dashboard_Page
+from base_pages.Kotak_Dashboard_tab import Kotak_Dashboard_Tab
 
 
 
@@ -29,18 +30,15 @@ class Test_02_Kotak_Dash_Btns:
         time.sleep(5)
         self.driver.maximize_window()
         time.sleep(3)
-        self.driver.click_cross_btn = Kotak_Dashboard_Page(self.driver)
-        self.driver.click_cross_btn.click_cross_btn()
-        time.sleep(3)
-        assert True
-        allure.attach(self.driver.get_screenshot_as_png(), name='cross_btn', attachment_type=AttachmentType.PNG)
-        message_i = "Cross Button is working fine and test-case passed successfully.."
-        allure.attach(message_i, name='cross_btn', attachment_type=AttachmentType.TEXT)
-        time.sleep(3)
+        dash_tab = self.driver.find_element(By.XPATH,'//a[@class="nav-link"]')
+        self.driver.execute_script("arguments[0].style.border='5px solid red'",dash_tab)
+        time.sleep(2)
         self.driver.click_dashboard_btn = Kotak_Dashboard_Page(self.driver)
         self.driver.click_dashboard_btn.click_dashboard_tab()
         time.sleep(3)
-        img = self.driver.find_element(By.XPATH,'//div[@class="box d-flex align-items-baseline justify-content-center oboardg_pop_icon"]')
+        img = self.driver.find_element(By.XPATH,'//div[@class="card popup-home02 bannerCardDesktop"]')
+        self.driver.execute_script("arguments[0].style.border='5px solid red'", img)
+        time.sleep(2)
         if img.is_displayed():
             assert True
             allure.attach(self.driver.get_screenshot_as_png(), name='dashboard_btn', attachment_type=AttachmentType.PNG)
@@ -51,28 +49,22 @@ class Test_02_Kotak_Dash_Btns:
             message_b = "Dashboard Button is not working fine and test-case failed.."
             allure.attach(message_b, name='dashboard_btn', attachment_type=AttachmentType.TEXT)
             assert False
-        time.sleep(3)
-        self.driver.click_my_learning_btn = Kotak_Dashboard_Page(self.driver)
-        self.driver.click_my_learning_btn.click_my_learning_tab()
-        time.sleep(3)
-        text = self.driver.find_element(By.XPATH,'//div[@class="d-flex justify-content-center"]').text
-        if text == "My Learning Journey":
-            assert True
-            allure.attach(self.driver.get_screenshot_as_png(), name='my_learning_btn', attachment_type=AttachmentType.PNG)
-            message_c = "My Learning Button is working fine and test-case passed successfully.."
-            allure.attach(message_c, name='my_learning_btn', attachment_type=AttachmentType.TEXT)
-        else:
-            allure.attach(self.driver.get_screenshot_as_png(), name='my_learning_btn', attachment_type=AttachmentType.PNG)
-            message_d = "My Learning Button is not working fine and test-case failed.."
-            allure.attach(message_d, name='my_learning_btn', attachment_type=AttachmentType.TEXT)
-            assert False
-        time.sleep(3)
-        self.driver.click_cross_btn = Kotak_Dashboard_Page(self.driver)
-        self.driver.click_cross_btn.click_cross_btn()
+        time.sleep(2)
+        club_privy = self.driver.find_element(By.XPATH,'//button[@class="btn btn-primary mt-2"]')
+        self.driver.execute_script("arguments[0].style.border='5px solid red'", club_privy)
+        time.sleep(2)
+        self.driver.click_club_privy_btn = Kotak_Dashboard_Page(self.driver)
+        self.driver.click_club_privy_btn.click_club_privy_btn()
+        time.sleep(2)
+        content = self.driver.find_element(By.XPATH,'//div[@class="innerPage"]')
+        self.driver.execute_script("arguments[0].style.border='5px solid red'", content)
+        time.sleep(2)
+        self.driver.click_bck_btn = Kotak_Dashboard_Page(self.driver)
+        self.driver.click_bck_btn.click_bck_btn()
         time.sleep(3)
         self.driver.click_feedback_btn = Kotak_Dashboard_Page(self.driver)
         self.driver.click_feedback_btn.click_feedback_tab()
-        time.sleep(3)
+        time.sleep(2)
         box = self.driver.find_element(By.XPATH,'//div[@class="modal-content"]')
         self.driver.execute_script("arguments[0].style.border='5px solid red'", box)
         time.sleep(3)
@@ -86,10 +78,12 @@ class Test_02_Kotak_Dash_Btns:
             message_f = "Feedback Button is not working fine and test-case failed.."
             allure.attach(message_f, name='feedback_btn', attachment_type=AttachmentType.TEXT)
             assert False
-        time.sleep(3)
-        self.driver.click_cross_btn = Kotak_Dashboard_Page(self.driver)
-        self.driver.click_cross_btn.click_cross_btn()
-        time.sleep(3)
+        time.sleep(2)
+        skip_btn = self.driver.find_element(By.XPATH, '//button[@class="skipBtn btn btn-primary"]')
+        self.driver.execute_script("arguments[0].style.border='5px solid red'", skip_btn)
+        self.driver.click_skip_btn = Kotak_Dashboard_Page(self.driver)
+        self.driver.click_skip_btn.click_skip_btn()
+        time.sleep(2)
         self.driver.click_take_a_tour_btn = Kotak_Dashboard_Page(self.driver)
         self.driver.click_take_a_tour_btn.click_take_a_tour_btn()
         time.sleep(3)

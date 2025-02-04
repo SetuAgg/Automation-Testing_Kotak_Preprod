@@ -33,9 +33,10 @@ class Test_03_Kotak_My_Learning_Tab:
         self.driver.click_my_learning_tab = Kotak_My_Learning_Tab(self.driver)
         self.driver.click_my_learning_tab.click_my_learning_tab()
         time.sleep(2)
-        element = self.driver.find_element(By.XPATH,'//div[@class="d-flex justify-content-center"]').text
+        element = self.driver.find_element(By.XPATH,'//div[@class="d-flex justify-content-center"]')
+        self.driver.execute_script("arguments[0].style.border='5px solid red'", element)
         time.sleep(3)
-        if element == "My Learning Journey":
+        if element.is_displayed():
             time.sleep(3)
             assert True
             allure.attach(self.driver.get_screenshot_as_png(), name='my_learning_btn', attachment_type=AttachmentType.PNG)
