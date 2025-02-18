@@ -8,8 +8,7 @@ class Kotak_Login_Page:
     btn_forgot_xpath = "//a[text()='Forgot Password?']"
     eye_btn = '//div[@class="show-password"]'
     close_btn_forgot_pass = '//button[@class="btn-close"]'
-    profile_dropdown = '//div[@class="step1"]'
-    logout= "//a[text()='Log out']"
+
 
 
     def __init__(self,driver):
@@ -27,6 +26,7 @@ class Kotak_Login_Page:
     def click_login_btn(self):
         self.driver.find_element(By.XPATH,self.btn_login_xpath).click()
 
+
     def click_forgot_password_btn(self):
         self.driver.find_element(By.XPATH,self.btn_forgot_xpath).click()
 
@@ -36,11 +36,10 @@ class Kotak_Login_Page:
     def click_close_btn(self):
         self.driver.find_element(By.XPATH,self.close_btn_forgot_pass).click()
 
-    def click_profile_dropdown(self):
-        self.driver.find_element(By.XPATH,self.profile_dropdown).click()
 
-    def click_logout(self):
-        self.driver.find_element(By.XPATH,self.logout).click()
+
+
+
 
 
 

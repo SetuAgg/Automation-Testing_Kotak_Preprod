@@ -1,7 +1,5 @@
 import allure
-import pytest
 from allure_commons.types import AttachmentType
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from base_pages.Kotak_Login_Page import Kotak_Login_Page
 from test_cases.conftest import setup
@@ -17,8 +15,6 @@ class Test_01_Kotak_Login:
     success_login_box_xpath = '//div[@class="modal-content"]'
     logo_Xpath = '//img[@class="Kotak-RM-logo"]'
     image_Xpath = '//div[@class="login_slider_img"]'
-
-
 
 
 
@@ -217,6 +213,7 @@ class Test_01_Kotak_Login:
             self.driver.close()
             assert False
 
+
     def test_kotak_invalid_login(self,setup):
         self.driver = setup
         self.driver.get(self.page_url)
@@ -245,6 +242,23 @@ class Test_01_Kotak_Login:
             allure.attach(message21, name="Login_page_test", attachment_type=allure.attachment_type.TEXT)
             self.driver.close()
             assert False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,7 +1,6 @@
 import allure
 import pytest
 import time
-
 from allure_commons.types import AttachmentType
 from selenium import webdriver
 from selenium.webdriver.common.by import By

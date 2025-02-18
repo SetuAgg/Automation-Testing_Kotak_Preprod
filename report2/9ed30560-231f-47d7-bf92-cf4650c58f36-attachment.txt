@@ -1,1 +1,0 @@
-The image is visible successfully and test-case passed successfully..

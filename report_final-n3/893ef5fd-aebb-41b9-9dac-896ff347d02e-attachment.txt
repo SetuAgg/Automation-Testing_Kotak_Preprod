@@ -1,1 +1,0 @@
-Valid Login condition of login page is satisfying and test-case passed successfully..
